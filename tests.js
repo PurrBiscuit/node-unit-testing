@@ -1,3 +1,3 @@
-const noFrameworkTest = require('./no-frameworks/test.js')
+const noTestRunnerTest = require('./tests/no-test-runner/test.js')
 
-noFrameworkTest()
+noTestRunnerTest()

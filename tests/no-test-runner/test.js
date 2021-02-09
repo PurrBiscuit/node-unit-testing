@@ -1,4 +1,4 @@
-const { orderTotal } = require('../src/orders')
+const { orderTotal } = require('../../src/orders')
 
 const {
   logError,
@@ -11,11 +11,11 @@ const {
   multipleQuantityOrderStub,
   noQuantityOrderStub,
   paidShippingOrderStub
-} = require('./stubs')
+} = require('../stubs')
 
 const runTest = () => {
   let error = false
-  starryPrinter('starting the no-frameworks test suite')
+  starryPrinter('starting the no-test-runner test suite')
 
   console.log('\nOrder Total Unit Test:')
   console.log('-----------------------')
@@ -53,7 +53,7 @@ const runTest = () => {
   if (error)
     throw new Error('An error was encountered during unit testing.  Review testing output for exact reason.')
 
-  starryPrinter('no-frameworks test suite completed successfully!')
+  starryPrinter('no-test-runner test suite completed successfully!')
 }
 
 module.exports = runTest
