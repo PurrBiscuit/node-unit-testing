@@ -6,29 +6,11 @@ const {
   starryPrinter
 } = require('./utils')
 
-const freeShippingOrderStub = {
-  items: [
-    { item: 'Dragon food', price: 8 },
-    { item: 'Dragon cage (small)', price: 800 },
-    { item: 'Shipping', price: 40, shipping: true }
-  ]
-}
-
-const paidShippingOrderStub = {
-  items: [
-    { item: 'Dragon food', price: 8 },
-    { item: 'Dragon toy', price: 20 },
-    { item: 'Shipping', price: 20, shipping: true }
-  ]
-}
-
-const multipleQuantityOrderStub = {
-  items: [
-    { item: 'Dragon food', price: 8, quantity: 10},
-    { item: 'Dragon toy', price: 20, quantity: 6 },
-    { item: 'Shipping', price: 20, shipping: true }
-  ]
-}
+const {
+  freeShippingOrderStub,
+  multipleQuantityOrderStub,
+  paidShippingOrderStub
+} = require('./stubs')
 
 const runTest = () => {
   let error = false
