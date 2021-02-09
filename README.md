@@ -4,7 +4,7 @@
 
 Sandbox environment to try out some unit testing stuff in JS.
 
-## Starting the Service
+## Starting the Test Suite(s)
 
 1. `docker build -t node-unit-testing .`
 1. To run all the tests -> `docker run --rm -v $(pwd):/service node-unit-testing`

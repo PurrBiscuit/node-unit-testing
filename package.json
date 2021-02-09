@@ -8,5 +8,8 @@
     "test": "node tests.js"
   },
   "author": "Steve Purr",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "log-symbols": "^4.0.0"
+  }
 }
