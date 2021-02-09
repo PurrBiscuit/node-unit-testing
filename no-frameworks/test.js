@@ -9,6 +9,7 @@ const {
 const {
   freeShippingOrderStub,
   multipleQuantityOrderStub,
+  noQuantityOrderStub,
   paidShippingOrderStub
 } = require('./stubs')
 
@@ -38,6 +39,13 @@ const runTest = () => {
     error = true
   } else {
     logSuccess('Multiple quantity order total equals 200')
+  }
+
+  if(orderTotal(noQuantityOrderStub) !== 28 ) {
+    logError('No quantity given order total did not equal 28')
+    error = true
+  } else {
+    logSuccess('No quantity given order total equals 28')
   }
 
   console.log()
