@@ -7,7 +7,8 @@
     "start": "node index.js",
     "test": "yarn test:jest && yarn test:no-test-runner",
     "test:jest": "jest ./tests/jest",
-    "test:no-test-runner": "node tests/no-test-runner/run.js"
+    "test:no-test-runner": "node tests/no-test-runner/run.js",
+    "test:jest:watch": "yarn test:jest --watch"
   },
   "author": "Steve Purr",
   "license": "ISC",
