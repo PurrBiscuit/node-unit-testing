@@ -4,23 +4,47 @@ const {
   freeShippingOrderStub,
   multipleQuantityOrderStub,
   noQuantityOrderStub,
-  paidShippingOrderStub
+  paidShippingOrderStub,
+  withCountryOrderStub
 } = require('../stubs')
 
 describe('Order Totals', () => {
+  const noop = () => {}
+
   it('Free shipping', () => {
-    expect(orderTotal(freeShippingOrderStub)).toBe(808)
+    orderTotal(noop, freeShippingOrderStub)
+      .then(res => expect(res).toBe(808))
   })
 
   it('Multiple Quantities', () => {
-    expect(orderTotal(multipleQuantityOrderStub)).toBe(200)
+    orderTotal(noop, multipleQuantityOrderStub)
+      .then(res => expect(res).toBe(200))
   })
 
   it('No Quantity', () => {
-    expect(orderTotal(noQuantityOrderStub)).toBe(28)
+    orderTotal(noop, noQuantityOrderStub)
+      .then(res => expect(res).toBe(28))
   })
 
   it('Paid shipping', () => {
-    expect(orderTotal(paidShippingOrderStub)).toBe(48)
+    orderTotal(noop, paidShippingOrderStub)
+      .then(res => expect(res).toBe(48))
   })
+
+  it('calls vatapi.com correctly', () => {
+    let isfetchCalled = false;
+
+    const fakeFetch = url => {
+      expect(url).toBe('https://vatapi.com/v1/country-code-check?code=DE')
+      isfetchCalled = true
+    }
+
+    orderTotal(fakeFetch, withCountryOrderStub)
+      .then(res => {
+        expect(isfetchCalled).toBe(true)
+        expect(res).toBe(120)
+      })
+  })
+
+  test.todo('if country code specified')
 })

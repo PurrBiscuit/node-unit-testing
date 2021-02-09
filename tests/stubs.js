@@ -28,3 +28,11 @@ exports.paidShippingOrderStub = {
     { item: 'Shipping', price: 20, shipping: true }
   ]
 }
+
+exports.withCountryOrderStub = {
+  countryCode: 'DE',
+  items: [
+    { item: 'Dragon Waffles', price: 40, quantity: 3 },
+    { item: 'Shipping', price: 20, shipping: true }
+  ]
+}
