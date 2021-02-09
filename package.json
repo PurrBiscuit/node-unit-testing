@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "log-symbols": "^4.0.0"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
   }
 }
