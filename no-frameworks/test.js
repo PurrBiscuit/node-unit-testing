@@ -22,6 +22,14 @@ const paidShippingOrderStub = {
   ]
 }
 
+const multipleQuantityOrderStub = {
+  items: [
+    { item: 'Dragon food', price: 8, quantity: 10},
+    { item: 'Dragon toy', price: 20, quantity: 6 },
+    { item: 'Shipping', price: 20, shipping: true }
+  ]
+}
+
 const runTest = () => {
   let error = false
   starryPrinter('starting the no-frameworks test suite')
@@ -41,6 +49,13 @@ const runTest = () => {
     error = true
   } else {
     logSuccess('Shipping included order total equals 48')
+  }
+
+  if(orderTotal(multipleQuantityOrderStub) !== 200 ) {
+    logError('Mulitple quantity order total did not equal 200')
+    error = true
+  } else {
+    logSuccess('Multiple quantity order total equals 200')
   }
 
   console.log()

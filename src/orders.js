@@ -1,7 +1,7 @@
 const orderTotal = ({ items }) => {
   const itemsTotal = items
     .filter(item => !item.shipping)
-    .reduce((acc, cur) => acc + cur.price, 0)
+    .reduce((acc, cur) => acc + (cur.price * (cur.quantity || 1)), 0)
 
   const { price: shippingPrice } = items.find(({ shipping }) => shipping)
 

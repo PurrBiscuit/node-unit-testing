@@ -1,7 +1,7 @@
 const logSymbols = require('log-symbols')
 
 exports.logError = msg =>
-  console.log('  ', logSymbols.error, 'ERROR: ', msg)
+  console.log('  ', logSymbols.error, 'ERROR:', msg)
 
 exports.logSuccess = msg =>
   console.log('  ', logSymbols.success, msg)
