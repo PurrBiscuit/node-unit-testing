@@ -30,11 +30,8 @@ describe('Order Totals', () => {
   })
 
   it('calls vatapi.com correctly if country code specified', () => {
-    let isfetchCalled = false;
-
     const fakeFetch = url => {
       expect(url).toBe('https://vatapi.com/v1/country-code-check?code=DE')
-      isfetchCalled = true
       return Promise.resolve({
         json: () => Promise.resolve({
           rates: {
@@ -48,7 +45,6 @@ describe('Order Totals', () => {
 
     return orderTotal(fakeFetch, withCountryOrderStub)
       .then(res => {
-        expect(isfetchCalled).toBe(true)
         expect(res).toBe(withCountryOrderStub.items[0].price * withCountryOrderStub.items[0].quantity * 1.19)
       })
   })
