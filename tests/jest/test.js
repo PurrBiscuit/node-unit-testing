@@ -30,9 +30,21 @@ describe('Order Totals', () => {
   })
 
   it('calls vatapi.com correctly if country code specified', () => {
-    const fakeFetch = url => {
-      expect(url).toBe('https://vatapi.com/v1/country-code-check?code=DE')
-      return Promise.resolve({
+    // const fakeFetch = url => {
+    //   expect(url).toBe('https://vatapi.com/v1/country-code-check?code=' + withCountryOrderStub.countryCode)
+    //   return Promise.resolve({
+    //     json: () => Promise.resolve({
+    //       rates: {
+    //         standard: {
+    //           value: 19
+    //         }
+    //       }
+    //     })
+    //   })
+    // }
+
+    const fakeFetch = jest.fn().mockReturnValue(
+      Promise.resolve({
         json: () => Promise.resolve({
           rates: {
             standard: {
@@ -41,11 +53,12 @@ describe('Order Totals', () => {
           }
         })
       })
-    }
+    )
 
     return orderTotal(fakeFetch, withCountryOrderStub)
       .then(res => {
         expect(res).toBe(withCountryOrderStub.items[0].price * withCountryOrderStub.items[0].quantity * 1.19)
+        expect(fakeFetch).toBeCalledWith('https://vatapi.com/v1/country-code-check?code=' + withCountryOrderStub.countryCode)
       })
   })
 })

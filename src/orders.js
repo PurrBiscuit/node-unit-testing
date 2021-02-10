@@ -1,7 +1,6 @@
 const getShipping = items =>
   items.find(({ shipping }) => shipping).price
 
-
 const calculateSubtotal = items =>
   items.filter(item => !item.shipping)
     .reduce((acc, cur) => acc + (cur.price * (cur.quantity || 1)), 0)
